@@ -4,214 +4,293 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Jake Russel C. Nicol | Portfolio</title>
+    <title>Activity midterm</title>
 
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script src="script.js" defer></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #eaf2ff, #f4f6f9);
+            color: #333;
+            margin: 0;
+            padding: 30px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Back Button */
+        .back-btn {
+            align-self: flex-start;
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 25px;
+            transition: 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: #1d4ed8;
+            transform: translateX(-4px);
+        }
+
+        /* Page Title */
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        /* Image Gallery */
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Gallery Images */
+        .image-container img {
+            display: block;
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #e2e8f0;
+            cursor: zoom-in;
+            transition: border-color 0.3s ease,
+                        box-shadow 0.3s ease,
+                        transform 0.3s ease;
+        }
+
+        .image-container img:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 8px 22px rgba(37, 99, 235, 0.2);
+            transform: scale(1.03);
+        }
+
+        .move-down {
+            margin-top: 40px;
+        }
+
+        /* Dark Background for Zoom */
+        .zoom-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.88);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            cursor: zoom-out;
+        }
+
+        .zoom-overlay.active {
+            display: flex;
+        }
+
+        /* Full Image */
+        .zoom-overlay img {
+            display: block;
+            max-width: 90vw;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            cursor: default;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            background: none;
+            border: none;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: #93c5fd;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            .image-container {
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .image-container img {
+                width: 100%;
+                max-width: 250px;
+                height: 220px;
+            }
+
+            .move-down {
+                margin-top: 0;
+            }
+
+            .header-title {
+                font-size: 1.2rem;
+            }
+
+            .zoom-overlay {
+                padding: 20px;
+            }
+
+            .zoom-overlay img {
+                max-width: 95vw;
+                max-height: 80vh;
+            }
+
+            .close-btn {
+                top: 15px;
+                right: 20px;
+                font-size: 35px;
+            }
+        }
+    </style>
 </head>
+<script src="script.js" defer></script>
 <body>
 
-    <!-- Navigation -->
-    <header>
-        <nav>
-            <div class="logo">
-                <i class="fa-solid fa-code"></i> MyPortfolio
-            </div>
+    <!-- Back Button -->
+    <a href="index.html" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+        Back to Portfolio
+    </a>
 
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+    <!-- Page Title -->
+    <div class="header-title">My Midterm Activities</div>
 
-            <button id="theme-toggle" type="button">
-                <i class="fa-solid fa-moon"></i> Dark Mode
-            </button>
-        </nav>
-    </header>
+    <!-- Image Gallery -->
+    <div class="image-container">
 
-    <!-- Home -->
-    <section id="home" class="center-section">
-        <div class="profile-container">
-            <img src="profile.jpg"
-                 alt="Jake Russel C. Nicol"
-                 class="profile-img">
-        </div>
+        <img src="scard.jpg"
+             alt="Activity 1"
+             onclick="zoomImage(this)">
 
-        <p class="welcome">WELCOME TO MY PORTFOLIO</p>
-        <h1>Jake Russel C. Nicol</h1>
-        <p class="tagline">BSIT Student & Aspiring Web Developer</p>
+        <img src="dis.jpg"
+             alt="Activity 2"
+             onclick="zoomImage(this)">
 
-        <button onclick="showAlert()" class="main-btn" type="button">
-            <i class="fa-solid fa-paper-plane"></i> Say Hello
+        <img src="myweb.jpg"
+             alt="My Website Activity"
+             onclick="zoomImage(this)">
+
+        <img src="m.png"
+             alt="Activity M"
+             onclick="zoomImage(this)">
+
+        <img src="a.png"
+             alt="Activity A"
+             onclick="zoomImage(this)">
+
+        <img src="e.png"
+             alt="Activity E"
+             onclick="zoomImage(this)">
+
+        <img src="r.png"
+            
+             alt="Activity R"
+             onclick="zoomImage(this)">
+
+    </div>
+
+    <!-- Image Zoom Overlay -->
+    <div class="zoom-overlay"
+         id="zoomOverlay"
+         onclick="closeZoom()">
+
+        <button class="close-btn"
+                type="button"
+                aria-label="Close image"
+                onclick="closeZoom()">
+            &times;
         </button>
-    </section>
 
-    <!-- About -->
-    <section id="about" class="container-section">
-        <div class="content-box">
-            <h2><i class="fa-solid fa-user-gear"></i> About Me</h2>
+        <img id="zoomedImage" src="" alt="Zoomed activity image">
 
-            <p>
-                I am a 2nd-year Information Technology student passionate
-                about creating simple, clean, dynamic, and functional web
-                applications. I am always striving to improve my coding
-                skills and master modern web design.
-            </p>
-        </div>
-    </section>
+    </div>
 
-    <!-- Skills -->
-    <section id="skills" class="container-section">
-        <div class="content-box">
-            <h2><i class="fa-solid fa-layer-group"></i> Skills & Expertise</h2>
+    <!-- JavaScript -->
+    <script>
+        function zoomImage(img) {
+            const overlay = document.getElementById("zoomOverlay");
+            const zoomedImage = document.getElementById("zoomedImage");
 
-            <div class="skills-grid">
+            zoomedImage.src = img.src;
+            zoomedImage.alt = img.alt;
 
-                <div class="skill-card">
-                    <div class="skill-icon html-icon">
-                        <i class="fa-brands fa-html5"></i>
-                    </div>
-                    <h3>HTML & CSS</h3>
-                    <p>Creating clean web pages and responsive user interfaces.</p>
-                </div>
+            overlay.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
 
-                <div class="skill-card">
-                    <div class="skill-icon js-icon">
-                        <i class="fa-brands fa-js"></i>
-                    </div>
-                    <h3>JavaScript</h3>
-                    <p>Adding interactive features and dynamic website behavior.</p>
-                </div>
+        function closeZoom() {
+            const overlay = document.getElementById("zoomOverlay");
+            const zoomedImage = document.getElementById("zoomedImage");
 
-                <div class="skill-card">
-                    <div class="skill-icon code-icon">
-                        <i class="fa-solid fa-code"></i>
-                    </div>
-                    <h3>C++ Programming</h3>
-                    <p>Practicing programming logic, conditions, loops, and functions.</p>
-                </div>
+            overlay.classList.remove("active");
+            zoomedImage.src = "";
 
-                <div class="skill-card">
-                    <div class="skill-icon problem-icon">
-                        <i class="fa-solid fa-lightbulb"></i>
-                    </div>
-                    <h3>Problem Solving</h3>
-                    <p>Analyzing technical issues and finding practical solutions.</p>
-                </div>
+            document.body.style.overflow = "";
+        }
 
-                <div class="skill-card">
-                    <div class="skill-icon ui-icon">
-                        <i class="fa-solid fa-laptop-code"></i>
-                    </div>
-                    <h3>Web UI Development</h3>
-                    <p>Designing navigation bars, cards, forms, and layouts.</p>
-                </div>
+        /* Prevent closing when clicking directly on the image */
+        document.getElementById("zoomedImage").addEventListener(
+            "click",
+            function(event) {
+                event.stopPropagation();
+            }
+        );
 
-                <div class="skill-card">
-                    <div class="skill-icon learn-icon">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <h3>Continuous Learning</h3>
-                    <p>Learning new technologies and improving IT knowledge.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="container-section">
-        <div class="content-box">
-            <h2><i class="fa-solid fa-folder-open"></i> Academic Projects</h2>
-
-            <div class="projects-container">
-
-                <a href="proh.html" class="card-link">
-                    <div class="card">
-                        <div class="project-icon">
-                            <i class="fa-solid fa-file-code"></i>
-                        </div>
-                        <h3>Activity Prelim</h3>
-                        <p>Personal information, class schedule, and preliminary activities.</p>
-                        <span class="view-btn">
-                            View Details <i class="fa-solid fa-arrow-right"></i>
-                        </span>
-                    </div>
-                </a>
-
-                <a href="actmid.html" class="card-link">
-                    <div class="card">
-                        <div class="project-icon">
-                            <i class="fa-solid fa-laptop-file"></i>
-                        </div>
-                        <h3>Activity Midterm</h3>
-                        <p>Midterm assignments and hands-on web development tasks.</p>
-                        <span class="view-btn">
-                            View Details <i class="fa-solid fa-arrow-right"></i>
-                        </span>
-                    </div>
-                </a>
-
-                <a href="actfinals.html" class="card-link">
-                    <div class="card">
-                        <div class="project-icon">
-                            <i class="fa-solid fa-window-maximize"></i>
-                        </div>
-                        <h3>Activity Finals</h3>
-                        <p>Final web development activities and portfolio presentation.</p>
-                        <span class="view-btn">
-                            View Details <i class="fa-solid fa-arrow-right"></i>
-                        </span>
-                    </div>
-                </a>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="container-section">
-        <div class="content-box">
-            <h2><i class="fa-solid fa-address-book"></i> Contact Info</h2>
-
-            <div class="contact-details">
-                <p>
-                    <i class="fa-solid fa-phone"></i>
-                    <strong>Phone:</strong> +63 927 193 2807
-                </p>
-
-                <p>
-                    <i class="fa-solid fa-envelope"></i>
-                    <strong>Email:</strong> jakerusselnicol2@gmail.com
-                </p>
-            </div>
-
-            <div class="social-links">
-                <a href="mailto:jakerusselnicol2@gmail.com" aria-label="Email">
-                    <i class="fa-solid fa-envelope"></i>
-                </a>
-                <a href="#home" aria-label="Back to Home">
-                    <i class="fa-solid fa-house"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Jake Russel C. Nicol. All Rights Reserved.</p>
-        <p class="footer-subtitle">Designed with passion for technology.</p>
-    </footer>
-
-    <!-- Back to Top -->
-    <button id="back-to-top" type="button" aria-label="Back to top">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
+        /* Close using the Escape key */
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                closeZoom();
+            }
+        });
+    </script>
 
 </body>
 </html>
