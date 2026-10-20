@@ -3,23 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Activity Prelim</title>
+
     <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome para sa Back Icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f6f9;
+            background: linear-gradient(135deg, #eaf2ff, #f4f6f9);
             color: #333;
             margin: 0;
             padding: 30px 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
         }
 
-        /* Back Button Design */
+        /* Back Button */
         .back-btn {
             align-self: flex-start;
             text-decoration: none;
@@ -28,67 +38,242 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 20px;
-            transition: color 0.2s ease;
+            margin-bottom: 25px;
+            transition: 0.3s ease;
         }
 
         .back-btn:hover {
             color: #1d4ed8;
+            transform: translateX(-4px);
         }
 
+        /* Page Title */
         .header-title {
             font-size: 1.5rem;
-            font-weight: 600;
+            font-weight: 700;
             color: #1e293b;
             margin-bottom: 30px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-bottom: 2px solid #3b82f6;
-            padding-bottom: 8px;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 10px;
+            text-align: center;
         }
 
+        /* Image Gallery */
         .image-container {
             display: flex;
-            gap: 20px; /* Agwat sa pagitan ng mga larawan */
+            flex-wrap: wrap;
+            justify-content: center;
             align-items: flex-start;
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
             background: #ffffff;
             padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
         }
 
-        img {
+        /* Gallery Images */
+        .image-container img {
+            display: block;
             width: 250px;
-            height: auto;
-            border-radius: 8px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
             border: 2px solid #e2e8f0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: zoom-in;
+            transition: border-color 0.3s ease,
+                        box-shadow 0.3s ease,
+                        transform 0.3s ease;
         }
 
-        /* Hover effect para sa images */
-        img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        .image-container img:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 8px 22px rgba(37, 99, 235, 0.2);
+            transform: scale(1.03);
         }
 
         .move-down {
-            margin-top: 40px; /* Pinabababa ang pangalawang picture */
+            margin-top: 40px;
+        }
+
+        /* Dark Background for Zoom */
+        .zoom-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.88);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            cursor: zoom-out;
+        }
+
+        .zoom-overlay.active {
+            display: flex;
+        }
+
+        /* Full Image */
+        .zoom-overlay img {
+            display: block;
+            max-width: 90vw;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            cursor: default;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            background: none;
+            border: none;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: #93c5fd;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            .image-container {
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .image-container img {
+                width: 100%;
+                max-width: 250px;
+                height: 220px;
+            }
+
+            .move-down {
+                margin-top: 0;
+            }
+
+            .header-title {
+                font-size: 1.2rem;
+            }
+
+            .zoom-overlay {
+                padding: 20px;
+            }
+
+            .zoom-overlay img {
+                max-width: 95vw;
+                max-height: 80vh;
+            }
+
+            .close-btn {
+                top: 15px;
+                right: 20px;
+                font-size: 35px;
+            }
         }
     </style>
 </head>
+<script src="script.js" defer></script>
 <body>
 
-    <!-- Back Button papuntang main portfolio -->
+    <!-- Back Button -->
     <a href="index.html" class="back-btn">
-        <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+        <i class="fa-solid fa-arrow-left"></i>
+        Back to Portfolio
     </a>
 
+    <!-- Page Title -->
     <div class="header-title">My Prelim Activities</div>
 
+    <!-- Image Gallery -->
     <div class="image-container">
-        <img src="abt.jpg" alt="About Me">
-        <img src="cls.jpg" class="move-down" alt="Class Schedule">
+
+        <img src="abt.jpg"
+             alt="Activity 1"
+             onclick="zoomImage(this)">
+
+        <img src="cls.jpg"
+             alt="Activity 2"
+             onclick="zoomImage(this)">
+
+
+
+       
+
     </div>
+
+    <!-- Image Zoom Overlay -->
+    <div class="zoom-overlay"
+         id="zoomOverlay"
+         onclick="closeZoom()">
+
+        <button class="close-btn"
+                type="button"
+                aria-label="Close image"
+                onclick="closeZoom()">
+            &times;
+        </button>
+
+        <img id="zoomedImage" src="" alt="Zoomed activity image">
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function zoomImage(img) {
+            const overlay = document.getElementById("zoomOverlay");
+            const zoomedImage = document.getElementById("zoomedImage");
+
+            zoomedImage.src = img.src;
+            zoomedImage.alt = img.alt;
+
+            overlay.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeZoom() {
+            const overlay = document.getElementById("zoomOverlay");
+            const zoomedImage = document.getElementById("zoomedImage");
+
+            overlay.classList.remove("active");
+            zoomedImage.src = "";
+
+            document.body.style.overflow = "";
+        }
+
+        /* Prevent closing when clicking directly on the image */
+        document.getElementById("zoomedImage").addEventListener(
+            "click",
+            function(event) {
+                event.stopPropagation();
+            }
+        );
+
+        /* Close using the Escape key */
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                closeZoom();
+            }
+        });
+    </script>
 
 </body>
 </html>
