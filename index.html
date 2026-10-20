@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jake Russel C. Nicol | Portfolio</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fa-solid fa-code"></i> MyPortfolio
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <button id="theme-toggle" type="button">
+                <i class="fa-solid fa-moon"></i> Dark Mode
+            </button>
+        </nav>
+    </header>
+
+    <!-- Home -->
+    <section id="home" class="center-section">
+        <div class="profile-container">
+            <img src="image_7366da.png"
+                 alt="Jake Russel C. Nicol"
+                 class="profile-img">
+        </div>
+
+        <p class="welcome">WELCOME TO MY PORTFOLIO</p>
+        <h1>Jake Russel C. Nicol</h1>
+        <p class="tagline">BSIT Student & Aspiring Web Developer</p>
+
+        <button onclick="showAlert()" class="main-btn" type="button">
+            <i class="fa-solid fa-paper-plane"></i> Say Hello
+        </button>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="container-section">
+        <div class="content-box">
+            <h2><i class="fa-solid fa-user-gear"></i> About Me</h2>
+
+            <p>
+                I am a 2nd-year Information Technology student passionate
+                about creating simple, clean, dynamic, and functional web
+                applications. I am always striving to improve my coding
+                skills and master modern web design.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="container-section">
+        <div class="content-box">
+            <h2><i class="fa-solid fa-layer-group"></i> Skills & Expertise</h2>
+
+            <div class="skills-grid">
+
+                <div class="skill-card">
+                    <div class="skill-icon html-icon">
+                        <i class="fa-brands fa-html5"></i>
+                    </div>
+                    <h3>HTML & CSS</h3>
+                    <p>Creating clean web pages and responsive user interfaces.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon js-icon">
+                        <i class="fa-brands fa-js"></i>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>Adding interactive features and dynamic website behavior.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon code-icon">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3>C++ Programming</h3>
+                    <p>Practicing programming logic, conditions, loops, and functions.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon problem-icon">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3>Problem Solving</h3>
+                    <p>Analyzing technical issues and finding practical solutions.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon ui-icon">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3>Web UI Development</h3>
+                    <p>Designing navigation bars, cards, forms, and layouts.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon learn-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3>Continuous Learning</h3>
+                    <p>Learning new technologies and improving IT knowledge.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="container-section">
+        <div class="content-box">
+            <h2><i class="fa-solid fa-folder-open"></i> Academic Projects</h2>
+
+            <div class="projects-container">
+
+                <a href="proh.html" class="card-link">
+                    <div class="card">
+                        <div class="project-icon">
+                            <i class="fa-solid fa-file-code"></i>
+                        </div>
+                        <h3>Activity Prelim</h3>
+                        <p>Personal information, class schedule, and preliminary activities.</p>
+                        <span class="view-btn">
+                            View Details <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <a href="actmid.html" class="card-link">
+                    <div class="card">
+                        <div class="project-icon">
+                            <i class="fa-solid fa-laptop-file"></i>
+                        </div>
+                        <h3>Activity Midterm</h3>
+                        <p>Midterm assignments and hands-on web development tasks.</p>
+                        <span class="view-btn">
+                            View Details <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <a href="actfinals.html" class="card-link">
+                    <div class="card">
+                        <div class="project-icon">
+                            <i class="fa-solid fa-window-maximize"></i>
+                        </div>
+                        <h3>Activity Finals</h3>
+                        <p>Final web development activities and portfolio presentation.</p>
+                        <span class="view-btn">
+                            View Details <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="container-section">
+        <div class="content-box">
+            <h2><i class="fa-solid fa-address-book"></i> Contact Info</h2>
+
+            <div class="contact-details">
+                <p>
+                    <i class="fa-solid fa-phone"></i>
+                    <strong>Phone:</strong> +63 927 193 2807
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-envelope"></i>
+                    <strong>Email:</strong> jakerusselnicol2@gmail.com
+                </p>
+            </div>
+
+            <div class="social-links">
+                <a href="mailto:jakerusselnicol2@gmail.com" aria-label="Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="#home" aria-label="Back to Home">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Jake Russel C. Nicol. All Rights Reserved.</p>
+        <p class="footer-subtitle">Designed with passion for technology.</p>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" type="button" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+</body>
+</html>
