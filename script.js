@@ -1,97 +1,52 @@
+// Apply the selected theme
+function applyTheme(theme) {
+    document.body.classList.toggle("dark-mode", theme === "dark");
 
-document.addEventListener("DOMContentLoaded", function () {
+    const themeToggle = document.getElementById("theme-toggle");
 
-    // =====================================
-    // DARK MODE
-    // =====================================
+    if (themeToggle) {
+        themeToggle.innerHTML = theme === "dark"
+            ? '<i class="fa-solid fa-sun"></i> Light Mode'
+            : '<i class="fa-solid fa-moon"></i> Dark Mode';
+    }
+}
 
-    const themeToggleBtn = document.getElementById("theme-toggle");
+// Load saved theme
+const savedTheme = localStorage.getItem("portfolioTheme") || "light";
+applyTheme(savedTheme);
 
-    function updateThemeButton() {
-        if (!themeToggleBtn) return;
+// Toggle Dark Mode
+const themeToggle = document.getElementById("theme-toggle");
 
+if (themeToggle) {
+    themeToggle.addEventListener("click", function () {
         const isDark = document.body.classList.contains("dark-mode");
+        const newTheme = isDark ? "light" : "dark";
 
-        if (isDark) {
-            themeToggleBtn.innerHTML =
-                '<i class="fa-solid fa-sun"></i> Light Mode';
-        } else {
-            themeToggleBtn.innerHTML =
-                '<i class="fa-solid fa-moon"></i> Dark Mode';
-        }
-    }
+        localStorage.setItem("portfolioTheme", newTheme);
+        applyTheme(newTheme);
+    });
+}
 
-    // Load previously saved theme
-    try {
-        if (localStorage.getItem("theme") === "dark") {
-            document.body.classList.add("dark-mode");
-        }
-    } catch (error) {
-        console.log("Theme storage is unavailable.");
-    }
+// Say Hello button
+function showAlert() {
+    alert("Hello! Thank you for visiting my portfolio.");
+}
 
-    updateThemeButton();
+// Back to Top button
+const backToTop = document.getElementById("back-to-top");
 
-    // Toggle theme when clicked
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener("click", function () {
+if (backToTop) {
+    window.addEventListener("scroll", function () {
+        backToTop.style.display =
+            window.scrollY > 300 ? "block" : "none";
+    });
 
-            document.body.classList.toggle("dark-mode");
-
-            const isDark =
-                document.body.classList.contains("dark-mode");
-
-            try {
-                localStorage.setItem(
-                    "theme",
-                    isDark ? "dark" : "light"
-                );
-            } catch (error) {
-                console.log("Unable to save theme preference.");
-            }
-
-            updateThemeButton();
+    backToTop.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
         });
-    }
+    });
+}
 
-    // =====================================
-    // SAY HELLO BUTTON
-    // =====================================
-
-    window.showAlert = function () {
-        alert(
-            "Hi! Thanks for visiting Jake Russel's portfolio. " +
-            "Feel free to reach out via the contact section!"
-        );
-    };
-
-    // =====================================
-    // BACK TO TOP
-    // =====================================
-
-    const backToTopBtn = document.getElementById("back-to-top");
-
-    function updateBackToTop() {
-        if (!backToTopBtn) return;
-
-        if (window.scrollY > 300) {
-            backToTopBtn.classList.add("visible");
-        } else {
-            backToTopBtn.classList.remove("visible");
-        }
-    }
-
-    window.addEventListener("scroll", updateBackToTop);
-
-    updateBackToTop();
-
-    if (backToTopBtn) {
-        backToTopBtn.addEventListener("click", function () {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
-    }
-
-});
