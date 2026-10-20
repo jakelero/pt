@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Prelim</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome para sa Back Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            margin: 0;
+            padding: 30px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Back Button Design */
+        .back-btn {
+            align-self: flex-start;
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            transition: color 0.2s ease;
+        }
+
+        .back-btn:hover {
+            color: #1d4ed8;
+        }
+
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 8px;
+        }
+
+        .image-container {
+            display: flex;
+            gap: 20px; /* Agwat sa pagitan ng mga larawan */
+            align-items: flex-start;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        img {
+            width: 250px;
+            height: 250px;
+            border-radius: 8px;
+            border: 2px solid #e2e8f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Hover effect para sa images */
+        img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .move-down {
+            margin-top: 40px; /* Pinabababa ang pangalawang picture */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back Button papuntang main portfolio -->
+    <a href="index.html" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+    </a>
+
+    <div class="header-title">My midterm Activities</div>
+
+    <div class="image-container">
+        <img src="scard.jpg" alt="">
+        <img src="dis.jpg" alt="">
+        <img src="myweb.jpg"  alt="">
+        <img src="" alt="">
+        <img src="" class="move-down" alt="">
+        
+    </div>
+
+</body>
+</html>
